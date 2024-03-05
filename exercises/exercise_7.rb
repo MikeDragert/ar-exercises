@@ -10,3 +10,10 @@ puts "Exercise 7"
 puts "----------"
 
 # Your code goes here ...
+puts "Enter a store name"
+name = gets
+newStore = Store.create(name: name)
+
+newStore.errors.full_messages.each {|error| puts "Error: #{error}"}
+
+

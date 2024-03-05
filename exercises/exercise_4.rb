@@ -7,3 +7,35 @@ puts "Exercise 4"
 puts "----------"
 
 # Your code goes here ...
+@surrey = Store.new
+@whistler = Store.new
+@yaletown = Store.new
+
+@surrey.name = "Surrey"
+@surrey.annual_revenue = 224000
+@surrey.mens_apparel = false
+@surrey.womens_apparel = true
+@surrey.save
+
+@whistler.name = "Whistler"
+@whistler.annual_revenue = 1900000
+@whistler.mens_apparel = true
+@whistler.womens_apparel = false
+@whistler.save
+
+@yaletown.name = "Yaletown"
+@yaletown.annual_revenue = 430000
+@yaletown.mens_apparel = true
+@yaletown.womens_apparel = true
+@yaletown.save
+
+@mens_stores = Store.where(mens_apparel: true).find_each
+
+for store in @mens_stores do
+  puts "#{store.name}: #{store.annual_revenue}"
+end
+
+@womens_stores = Store.where("womens_apparel = ? and annual_revenue < ?",  true, 1000000).find_each
+for store in @womens_stores do
+  puts "#{store.name}: #{store.annual_revenue}"
+end
